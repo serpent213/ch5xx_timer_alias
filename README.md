@@ -33,10 +33,11 @@ In your application you can do now:
 TMRA_GPIO_MaybePinRemap();
 
 TMRA_GPIO_ModeCfg(GPIO_ModeOut_PP_5mA);
-TMRA_GPIO_SetBit()
-TMRA_GPIO_ResetBit()
-TMRA_PFIC_EnableIRQ()
-TMRA_PFIC_DisableIRQ()
+TMRA_GPIO_SetBit();
+TMRA_GPIO_ResetBit();
+TMRA_PFIC_EnableIRQ();
+TMRA_PFIC_DisableIRQ();
+printf("timer pin: " TMRA_PIN_NAME);
 ```
    
 All other (timer specific) functions resemble exactly the original, just replacing

@@ -218,10 +218,17 @@ extern "C" {
 #endif
 
 // nesting required for proper macro expansion
+#define TA_STR(s) #s
+#define TA_STR_STR(s) TA_STR(s)
 #define _TA_CONCAT(x, y) x ## y
 #define TA_CONCAT(x, y) _TA_CONCAT(x, y)
 #define _TA_CONCAT3(x, y, z) x ## y ## z
 #define TA_CONCAT3(x, y, z) _TA_CONCAT3(x, y, z)
+
+#define TMRA_PIN_NAME TA_STR_STR(TA_CONCAT3(P, TMRA_GPIO_BANK, TMRA_GPIO_PIN))
+#define TMRB_PIN_NAME TA_STR_STR(TA_CONCAT3(P, TMRB_GPIO_BANK, TMRB_GPIO_PIN))
+#define TMRC_PIN_NAME TA_STR_STR(TA_CONCAT3(P, TMRC_GPIO_BANK, TMRC_GPIO_PIN))
+#define TMRD_PIN_NAME TA_STR_STR(TA_CONCAT3(P, TMRD_GPIO_BANK, TMRD_GPIO_PIN))
 
 #if TMRA_ALT_PIN == TRUE
     #define TMRA_GPIO_MaybePinRemap() GPIOPinRemap(ENABLE, TA_CONCAT(RB_PIN_TMR, TMRA_TARGET))
@@ -255,6 +262,7 @@ extern "C" {
 #define TMRA_GetCurrentTimer TA_CONCAT3(TMR, TMRA_TARGET, _GetCurrentTimer)
 #define TMRA_CountOverflowCfg TA_CONCAT3(TMR, TMRA_TARGET, _CountOverflowCfg)
 #define TMRA_EXTSingleCounterInit TA_CONCAT3(TMR, TMRA_TARGET, _EXTSingleCounterInit)
+#define TMRA_DMACfg TA_CONCAT3(TMR, TMRA_TARGET, _DMACfg)
 
 #define TMRA_CapInit TA_CONCAT3(TMR, TMRA_TARGET, _CapInit)
 #define TMRA_CAPTimeoutCfg TA_CONCAT3(TMR, TMRA_TARGET, _CAPTimeoutCfg)
@@ -283,6 +291,7 @@ extern "C" {
 #define TMRB_GetCurrentTimer TA_CONCAT3(TMR, TMRB_TARGET, _GetCurrentTimer)
 #define TMRB_CountOverflowCfg TA_CONCAT3(TMR, TMRB_TARGET, _CountOverflowCfg)
 #define TMRB_EXTSingleCounterInit TA_CONCAT3(TMR, TMRB_TARGET, _EXTSingleCounterInit)
+#define TMRB_DMACfg TA_CONCAT3(TMR, TMRB_TARGET, _DMACfg)
 
 #define TMRB_CapInit TA_CONCAT3(TMR, TMRB_TARGET, _CapInit)
 #define TMRB_CAPTimeoutCfg TA_CONCAT3(TMR, TMRB_TARGET, _CAPTimeoutCfg)
@@ -311,6 +320,7 @@ extern "C" {
 #define TMRC_GetCurrentTimer TA_CONCAT3(TMR, TMRC_TARGET, _GetCurrentTimer)
 #define TMRC_CountOverflowCfg TA_CONCAT3(TMR, TMRC_TARGET, _CountOverflowCfg)
 #define TMRC_EXTSingleCounterInit TA_CONCAT3(TMR, TMRC_TARGET, _EXTSingleCounterInit)
+#define TMRC_DMACfg TA_CONCAT3(TMR, TMRC_TARGET, _DMACfg)
 
 #define TMRC_CapInit TA_CONCAT3(TMR, TMRC_TARGET, _CapInit)
 #define TMRC_CAPTimeoutCfg TA_CONCAT3(TMR, TMRC_TARGET, _CAPTimeoutCfg)
@@ -339,6 +349,7 @@ extern "C" {
 #define TMRD_GetCurrentTimer TA_CONCAT3(TMR, TMRD_TARGET, _GetCurrentTimer)
 #define TMRD_CountOverflowCfg TA_CONCAT3(TMR, TMRD_TARGET, _CountOverflowCfg)
 #define TMRD_EXTSingleCounterInit TA_CONCAT3(TMR, TMRD_TARGET, _EXTSingleCounterInit)
+#define TMRD_DMACfg TA_CONCAT3(TMR, TMRD_TARGET, _DMACfg)
 
 #define TMRD_CapInit TA_CONCAT3(TMR, TMRD_TARGET, _CapInit)
 #define TMRD_CAPTimeoutCfg TA_CONCAT3(TMR, TMRD_TARGET, _CAPTimeoutCfg)
